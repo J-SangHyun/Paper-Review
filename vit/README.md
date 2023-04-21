@@ -3,7 +3,7 @@
 [Paper](https://arxiv.org/pdf/2010.11929.pdf) | [Code](https://github.com/google-research/vision_transformer)
 
 ## 1. Introduction
-Transformer와 같은 self-attention 기반의 모델들이 NLP 분야에서 많이 사용되고 있다. Transformer는 computational efficiency와 scalability가 좋기 때문에, 큰 모델을 학습하는 것이 가능하며, dataset과 model 크기가 점점 커지고 있는 현재에도 여전히 좋은 성능을 보이고 있다.
+Transformer와 같은 self-attention 기반의 모델들이 NLP 분야에서 많이 사용되고 있다. Transformer는 computational efficiency와 scalability가 좋기 때문에, 큰 모델을 학습하는 것이 가능하며, dataset과 model의 크기가 점점 커지고 있는 현재에도 여전히 좋은 성능을 보이고 있다.
 
 하지만 computer vision 분야에서는 convolution 구조가 대부분이지만, CNN과 비슷한 구조에 self-attention을 적용하거나 convolution을 완전히 self-attention으로 대체하려는 시도들이 있었다. 하지만 이러한 모델들은 이론적으로는 효율적인 구조일 수 있어도, 특수한 attention 패턴들을 사용하기 때문에 modern hardware accelerator에서는 효율적으로 작동하기 힘들었다. 따라서 이미지 인식 분야에서는 여전히 ResNet 류의 고전 모델들이 state of the art 모델이었다.
 
