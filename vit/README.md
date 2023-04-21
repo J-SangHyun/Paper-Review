@@ -23,15 +23,15 @@ BERT의 ```[class]``` token처럼 embedded patch들의 sequence 앞에 learnable
 Transformer encoder는 multiheaded self-attention(MSA)과 MLP block들이 번갈아가며 쌓여있는 구조이다. 그리고 모든 block 전에는 layernorm(LN)이, 모든 block 후에는 residual connection이 적용되어 있다. 또한 MLP는 GELU non-linearity와 두 개의 layer로 구성되어 있다.
 
 $$
-{\bf z}_0=[{\bf x}_{\rm class};{\bf x}_p^1{\bf E};{\bf x}_p^2{\bf E};\dots;{\bf x}_p^N{\bf E}]+{\bf E}_{\rm pos}
+{\bf z}_0=[{\bf x}_{\rm class};{\bf x}_p^1{\bf E};{\bf x}_p^2{\bf E};\dots;{\bf x}_p^N{\bf E}]+{\bf E}_{\rm pos}, \quad{\bf E}\in\mathbb{R}^{(P^2\cdot C)\times D}, {\bf E}_{\rm pos}\in\mathbb{R}^{(N+1)\times D}
 $$
 
 $$
-{\bf z}_l'= {\rm MSA}({\rm LN}({\bf z}_{l-1}))+{\bf z}_{l-1}
+{\bf z}_l'= {\rm MSA}({\rm LN}({\bf z}_{l-1}))+{\bf z}_{l-1}, \quad l=1\dots L
 $$
 
 $$
-{\bf z}_l={\rm MLP}({\rm LN}({\bf z}_l'))+{\bf z}_l'
+{\bf z}_l={\rm MLP}({\rm LN}({\bf z}_l'))+{\bf z}_l', \quad l=1\dots L
 $$
 
 $$
@@ -41,3 +41,10 @@ $$
 ### 2.3. Vision Transformer & CNN based Model
 - **Inductive Bias** | CNN은 locality와 two-dimensional neighborhood structure, translation equivariance가 고려된 layer이다. 반면 ViT는 self-attention layer들이 global한 정보만을 학습하므로 local & translation equivariant는 오직 MLP layer에서만 학습될 수 있다. 따라서 ViT는 CNN으로 구성된 모델보다는 image-specific inductive bias가 낮다.
 - **Hybrid Architecture** | Hybrid model에서는 raw image patch들을 사용하는 것이 아니라 CNN feature map으로부터 추출된 patch들을 사용한다. 추출된 patch들은 flatten하고 Transformer dimension으로 projection하여 patch embedding이 된다.
+
+### 2.4. Model Variants
+| Model | Layers | Hidden size $D$ | MLP size | Heads | Params |
+|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
+| ViT-Base | 12 | 768 | 3072 | 12 | 86M |
+| ViT-Large | 24 | 1024 | 4096 | 16 | 307M |
+| ViT-Huge | 32 | 1280 | 5120 | 16 | 632M |
