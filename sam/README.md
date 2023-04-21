@@ -1,21 +1,6 @@
-[<- Back](../README.md)
-
-[🏠Home](../../../README.md) > [📖Tech Blog](../../README.md) > [📷Computer Vision](../README.md) > \[Paper Review\] Segment Anything
-
-### \[Paper Review\]
-# Segment Anything
-2023-04-18
-
------
-
+### Paper Review
+# Segment Anything (2023)
 [Paper](https://arxiv.org/pdf/2304.02643.pdf) | [Code](https://github.com/facebookresearch/segment-anything)
-
------
-
-## 목차
-1. [Segment Anything Task](#1-segment-anything-task)
-
------
 
 ## 1. Segment Anything Task
 

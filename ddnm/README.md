@@ -1,12 +1,6 @@
 ### Paper Review
 # Zero-Shot Image Restoration Using Denoising Diffusion Null-Space Model (2022)
-2022 | [Paper](https://arxiv.org/pdf/2212.00490.pdf) | [Code](https://github.com/wyhuai/DDNM)
-
------
-
-
-
------
+[Paper](https://arxiv.org/pdf/2212.00490.pdf) | [Code](https://github.com/wyhuai/DDNM)
 
 ## 1. Diffusion Model
 ### 1.1. Forward Process
@@ -47,8 +41,6 @@ $$
 $$
 DDPM에서는 학습된 neural network $\mathcal{Z}_{{\bf \theta}}$를 이용하여 random noises ${\bf x}_T\sim\mathcal{N}({\bf 0},{\bf I})$로부터, $p({\bf x}_{t-1}|{\bf x}_t,{\bf x}_0)$를 이용하여 ${\bf x}_{t-1}$을 반복적으로 sampling하게 되면 clean images ${\bf x}_0\sim q({\bf x})$를 얻을 수 있다.
 
------
-
 ## 2. Range-Null Space Decomposition
 > **Pseudo-inverse**란, 주어진 linear operator ${\bf A}\in\mathbb{R}^{d\times D}$에 대하여, ${\bf A}{\bf A}^\dagger {\bf A}\equiv{\bf A}$를 만족하는 ${\bf A}^\dagger\in\mathbb{R}^{D\times d}$를 말한다.
 
@@ -58,8 +50,6 @@ ${\bf A}{\bf A}^\dagger {\bf A}{\bf x}\equiv {\bf A}{\bf x}$이므로 ${\bf A}^\
 $$
 {\bf x}\equiv{\bf A}^\dagger{\bf A}{\bf x}+({\bf I}-{\bf A}^\dagger{\bf A}){\bf x}
 $$
-
------
 
 ## 3. Denoising Diffusion Null-Space Model
 ### 3.1. Image Restoration & Null-Space
@@ -100,8 +90,6 @@ $$
 - Super-resolution: scale이 $n$이라고 할 때, 각각의 $n\times n$ 크기의 패치에 대하여 ${\bf A}\in\mathbb{R}^{1\times n^2}$은 average-pooling operator가 되어야하므로 ${\bf A}=\left[\frac{1}{n^2}\quad\dots\quad\frac{1}{n^2}\right]$와 ${\bf A}^\dagger\in\mathbb{R}^{n^2\times 1}=[1\quad\dots\quad 1]^\top$가 된다.
 
 ${\bf A}$가 여러 sub-operation들의 조합으로 구성되어 있다면, ${\bf A}={\bf A}_1\dots{\bf A}_n$일 때, ${\bf A}$의 pseudo-inverse ${\bf A}^\dagger={\bf A}_n^\dagger\dots{\bf A}_1^\dagger$가 된다.
-
------
 
 ## 4. DDNM+
 ### 4.1. Scaling Range-Space Correction
