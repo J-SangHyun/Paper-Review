@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>README.md</title>
+  <title>An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale (2020)</title>
   <link rel="stylesheet" href="../assets/style.css" />
 </head>
 
@@ -62,46 +62,7 @@
 <li><strong>Inductive Bias</strong> | CNN은 locality와 two-dimensional neighborhood structure, translation equivariance가 고려된 layer이다. 반면 ViT는 self-attention layer들이 global한 정보만을 학습하므로 local &amp; translation equivariant는 오직 MLP layer에서만 학습될 수 있다. 따라서 ViT는 CNN으로 구성된 모델보다는 image-specific inductive bias가 낮다.</li>
 <li><strong>Hybrid Architecture</strong> | Hybrid model에서는 raw image patch들을 사용하는 것이 아니라 CNN feature map으로부터 추출된 patch들을 사용한다. 추출된 patch들은 flatten하고 Transformer dimension으로 projection하여 patch embedding이 된다.</li>
 </ul>
-<h3 id="model-variants">2.4. Model Variants</h3>
 
-<table>
-<thead>
-<tr>
-<th align="center">Model</th>
-<th align="center">Layers</th>
-<th align="center">Hidden <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi></mrow><annotation encoding="application/x-tex">D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.02778em;">D</span></span></span></span></span></th>
-<th align="center">MLP</th>
-<th align="center">Heads</th>
-<th align="center">Params</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">ViT-B</td>
-<td align="center">12</td>
-<td align="center">768</td>
-<td align="center">3072</td>
-<td align="center">12</td>
-<td align="center">86M</td>
-</tr>
-<tr>
-<td align="center">ViT-L</td>
-<td align="center">24</td>
-<td align="center">1024</td>
-<td align="center">4096</td>
-<td align="center">16</td>
-<td align="center">307M</td>
-</tr>
-<tr>
-<td align="center">ViT-H</td>
-<td align="center">32</td>
-<td align="center">1280</td>
-<td align="center">5120</td>
-<td align="center">16</td>
-<td align="center">632M</td>
-</tr>
-</tbody>
-</table>
     </div>
   </div>
 </body>
