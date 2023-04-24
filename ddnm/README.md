@@ -11,18 +11,34 @@ $$
 q({\bf x}_t|{\bf x}_{t-1})
 =\mathcal{N}({\bf x}_t;\sqrt{1-\beta_t}{\bf x}_{t-1}, \beta_t{\bf I})
 $$
-이를 현재 상태인 ${\bf x_t}$의 관점에서 표현하면 다음과 같다.
+이를 현재 상태인 ${\bf x_t}$의 관점에서 표현하여 reparametrization trick을 사용하면,
 $$
 {\bf x_t}
-=\sqrt{1-\beta_t}{\bf x}_{t-1}+\sqrt{\beta_t}{\bf \epsilon},\quad{\bf \epsilon}\sim\mathcal{N}(0,{\bf I})
+=\sqrt{1-\beta_t}{\bf x}_{t-1}+\sqrt{\beta_t}{\bf \epsilon},\quad{\bf \epsilon}\sim\mathcal{N}({\bf 0},{\bf I})
 $$
-여기서 reparametrization trick을 사용하면,
+
 $$
 q({\bf x}_t|{\bf x}_0)
 =\mathcal{N}({\bf x}_t;\sqrt{\bar{\alpha}_t}{\bf x}_0,(1-\bar{\alpha}_t){\bf I})\\
 {\rm with}\quad\alpha_t=1-\beta_t,\quad\bar{\alpha}_t=\prod_{i=1}^{t}\alpha_i
 $$
 가 됨을 보일 수 있다.
+
+> **Proof**
+>
+> ${\bf x}_t=\sqrt{\alpha_t}{\bf x}_{t-1}+\sqrt{1-\alpha_t}{\bf \epsilon}$
+>
+> $=\sqrt{\alpha_t}(\sqrt{\alpha_{t-1}}{\bf x}_{t-2}+\sqrt{1-\alpha_{t-1}}{\bf \epsilon})+\sqrt{1-\alpha_t}{\bf \epsilon}$
+>
+> $=\sqrt{\alpha_t\alpha_{t-1}}{\bf x}_{t-2}+\sqrt{\alpha_t(1-\alpha_{t-1})}{\bf \epsilon}+\sqrt{1-\alpha_t}{\bf \epsilon}$
+>
+> 이 때, 두 개의 normal distribution $\mathcal{N}({\bf 0}, \sigma_1^2{\bf I})$와 $\mathcal{N}({\bf 0}, \sigma_2^2{\bf I})$의 합은 $\mathcal{N}({\bf 0}, (\sigma_1^2+\sigma_2^2){\bf I})$이 되므로
+>
+> ${\bf x}_t=\sqrt{\alpha_t\alpha_{t-1}}{\bf x}_{t-2}+\sqrt{\alpha_t(1-\alpha_{t-1})+(1-\alpha_t)}{\bf \epsilon}$
+>
+> $=\sqrt{\alpha_t\alpha_{t-1}}{\bf x}_{t-2}+\sqrt{1-\alpha_t\alpha_{t-1}}{\bf \epsilon}$
+>
+> 가 된다. 이를 재귀적으로 반복하면 위와 같은 식을 얻을 수 있다.
 
 ### 1.2. Reverse Process
 Reverse process는 현재 상태 ${\bf x}_t$로부터 이전 상태인 ${\bf x}_{t-1}$을 얻기 위하여 posterior distribution $p({\bf x}_{t-1}|{\bf x}_t, {\bf x}_0)$을 구하는 과정이다. Forward process의 수식과 Bayes 정리를 이용하면,
